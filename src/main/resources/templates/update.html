@@ -3,39 +3,41 @@
     <h2 class="my-5">공지 수정</h2>
     <div class="row">
         <div class="col-lg-7 mb-4 mb-lg-0">
-            <form action="/update" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" th:value="${notice.id}"/>
-                <input type="hidden" name="img" th:value="${notice.img}"/>
-                <div class="row g-4">
-                    <div class="col-12">
-                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
-                               for="inputName">제목</label>
-                        <input class="form-control" id="inputName" type="text" placeholder="title" name="title"
-                               th:value="${notice.getTitle()}"/>
+                        <form class="mb-9" action="/create" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" th:value="${question.id}"/>
+                <input type="hidden" name="img" th:value="${question.img}"/>
+                <div class="row g-3 flex-between-end mb-5">
+                    <div class="col-auto">
+                        <h2 class="mb-2">질문 등록</h2>
+                        <h5 class="text-body-tertiary fw-semibold">궁금한 점을 물어보세요.</h5>
                     </div>
-                    <div class="col-12">
-                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
-                               for="summernote">내용</label>
-                        <textarea class="form-control" rows="5" id="summernote"
-                                  name="about">[[${notice.getAbout()}]]</textarea>
+                    <div class="col-auto">
+                        <a class="btn btn-phoenix-secondary me-2 mb-2 mb-sm-0" type="button" href="/readlist">취소</a>
+                        <button class="btn btn-primary mb-2 mb-sm-0" type="submit">등록</button>
                     </div>
-
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputCountry">분류</label>
-                        <select class="form-select text-body-emphasis" id="inputCountry" name="cate"
-                                th:data-value="${notice.getCate()}">
-                            <option th:value="${notice.getCate()}" selected disabled>[[${notice.getCate()}]]</option>
-                            <option value="일반공지">일반공지</option>
-                            <option value="회원공지">회원공지</option>
-                            <option value="배송공지">배송공지</option>
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <input class="form-control" type="file" name="file"/>
-                    </div>
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button class="btn btn-primary px-8 px-sm-11 me-2" type="submit">등록</button>
-                        <a class="btn btn-danger px-8 px-sm-11 me-2" th:href="@{|/readdetail/${notice.getId()}|}" >취소</a>
+                </div>
+                <div class="row g-5">
+                    <div class="col-12 col-xl-8">
+                        <h4 class="mb-3">제목</h4>
+                        <input th:value="${question.getTitle()}" class="form-control mb-5" type="text" name="title" placeholder="Write title here...">
+                        <div class="mb-6">
+                            <h4 class="mb-3"> 질문 내용</h4>
+                            <textarea name="about" id="summernote">[[${question.getAbout()}]]</textarea>
+                        </div>
+                        <h4 class="mb-3">이미지</h4>
+                        <div class="dropzone dropzone-multiple p-0 mb-5 dz-clickable" id="my-awesome-dropzone">
+                            <input class="form-control" type="file" name="file"/>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputCountry">분류</label>
+                            <select class="form-select text-body-emphasis" id="inputCountry" name="cate"
+                                    th:data-value="${question.getCate()}">
+                                <option th:value="${question.getCate()}" selected disabled>[[${notice.getCate()}]]</option>
+                                <option value="계정문의">계정문의</option>
+                                <option value="상품문의">상품문의</option>
+                                <option value="배송문의">배송문의</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
