@@ -1,0 +1,40 @@
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
+    <h2 class="my-5">공지 등록</h2>
+    <div class="row">
+        <div class="col-lg-7 mb-4 mb-lg-0">
+            <form action="/create" method="post" enctype="multipart/form-data">
+            <div class="row g-4">
+                    <div class="col-12">
+                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
+                               for="inputName">제목</label>
+                        <input class="form-control" id="inputName" type="text" placeholder="title" name="title"/>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
+                               for="summernote">내용</label>
+                        <textarea class="form-control" rows="5" id="summernote" name="about"></textarea>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputCountry">분류</label>
+                        <select class="form-select text-body-emphasis" id="inputCountry" name="cate">
+                            <option selected disabled>분류를 고르세요</option>
+                            <option value="일반공지">일반공지</option>
+                            <option value="회원공지">회원공지</option>
+                            <option value="배송공지">배송공지</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <input class="form-control" type="file" name="file"/>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary px-8 px-sm-11 me-2" type="submit">등록</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>
