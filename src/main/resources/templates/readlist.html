@@ -1,92 +1,111 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
-        <div class="container-small cart">
-            <nav class="mb-2" aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-                    <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Default</li>
-                </ol>
-            </nav>
-            <h2 class="mb-5">Wishlist<span class="text-body-tertiary fw-normal ms-2">(43)</span></h2>
-            <div class="border-y border-translucent" id="productWishlistTable" data-list="{&quot;valueNames&quot;:[&quot;products&quot;,&quot;color&quot;,&quot;size&quot;,&quot;price&quot;,&quot;quantity&quot;,&quot;total&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
-                <div class="table-responsive scrollbar">
-                    <table class="table fs-9 mb-0">
-                        <thead>
-                        <tr>
-                            <th class="sort white-space-nowrap align-middle fs-10" scope="col" style="width:7%;"></th>
-                            <th class="sort white-space-nowrap align-middle" scope="col" style="width:30%; min-width:250px;" data-sort="products">PRODUCTS</th>
-                            <th class="sort align-middle" scope="col" data-sort="color" style="width:16%;">COLOR</th>
-                            <th class="sort align-middle" scope="col" data-sort="size" style="width:10%;">SIZE</th>
-                            <th class="sort align-middle text-end" scope="col" data-sort="price" style="width:10%;">PRICE</th>
-                            <th class="sort align-middle text-end pe-0" scope="col" style="width:35%;"> </th>
+    <div class="container-small cart">
+        <nav class="mb-2" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
+                <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Default</li>
+            </ol>
+        </nav>
+        <h2 class="mb-5">Q&A List<span class="text-body-tertiary fw-normal ms-2">(43)</span></h2>
+        <div class="border-y border-translucent" id="productWishlistTable"
+             data-list="{&quot;valueNames&quot;:[&quot;products&quot;,&quot;color&quot;,&quot;size&quot;,&quot;price&quot;,&quot;quantity&quot;,&quot;total&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
+            <div class="table-responsive scrollbar">
+                <table class="table fs-9 mb-0">
+                    <thead>
+                    <tr>
+                        <th class="sort white-space-nowrap align-middle fs-10" scope="col" style="width:7%;">번호</th>
+                        <th class="sort white-space-nowrap align-middle" scope="col" style="width:30%; min-width:250px;"
+                            data-sort="products">이미지
+                        </th>
+                        <th class="sort align-middle" scope="col" data-sort="color" style="width:16%;">카테고리</th>
+                        <th class="sort align-middle" scope="col" data-sort="size" style="width:10%;">제목</th>
+                        <th class="sort align-middle text-end" scope="col" data-sort="price" style="width:10%;">본문
+                        </th>
+                        <th class="sort align-middle text-end pe-0" scope="col" style="width:35%;">작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list" id="profile-wishlist-table-body">
+                    <th:block th:each="question:${questions}">
+                        <tr class="hover-actions-trigger btn-reveal-trigger position-static">
+                            <td class="price align-middle text-body fs-9 fw-semibold text-end" th:text="${question.getId()}"></td>
+                            <td class="align-middle white-space-nowrap ps-0 py-0"><a
+                                    class="border border-translucent rounded-2 d-inline-block"
+                                    th:href="/readdetail/${question.getId()}">
+                                <img th:src="|${awsEndPoint}/${question.getImg()}|" alt="" width="53"></a></td>
+                            <td class="color align-middle white-space-nowrap fs-9 text-body" th:text="${question.getCate()}"></td>
+                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1"
+                                                                       th:href="/readdetail/${question.getId()}"
+                                                                       th:text="${question.title}"></a></td>
+                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold" th:text="${question.getAbout()}"></td>
+                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0" th:text="${question.getDate()}"></td>
                         </tr>
-                        </thead>
-                        <tbody class="list" id="profile-wishlist-table-body"><tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a class="border border-translucent rounded-2 d-inline-block" href="../../../apps/e-commerce/landing/product-details.html"><img src="../../../assets/img//products/1.png" alt="" width="53"></a></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1" href="../../../apps/e-commerce/landing/product-details.html">Fitbit Sense Advanced Smartwatch with Tools for Heart Health, Stress Management &amp; Skin Temperature Trends, Carbon/Graphite, One Size (S &amp; L Bands)</a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body">Pure matte black</td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold">42</td>
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end">$57</td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0">
-                                <button class="btn btn-sm text-body-quaternary text-body-tertiary-hover me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
-                                <button class="btn btn-primary fs-10"><svg class="svg-inline--fa fa-cart-shopping me-1 fs-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cart-shopping" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg><!-- <span class="fas fa-shopping-cart me-1 fs-10"></span> Font Awesome fontawesome.com -->Add to cart</button>
-                            </td>
-                        </tr><tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a class="border border-translucent rounded-2 d-inline-block" href="../../../apps/e-commerce/landing/product-details.html"><img src="../../../assets/img//products/7.png" alt="" width="53"></a></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1" href="../../../apps/e-commerce/landing/product-details.html">2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray</a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body">Black</td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold">Pro</td>
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end">$1,499</td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0">
-                                <button class="btn btn-sm text-body-quaternary text-body-tertiary-hover me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
-                                <button class="btn btn-primary fs-10"><svg class="svg-inline--fa fa-cart-shopping me-1 fs-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cart-shopping" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg><!-- <span class="fas fa-shopping-cart me-1 fs-10"></span> Font Awesome fontawesome.com -->Add to cart</button>
-                            </td>
-                        </tr><tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a class="border border-translucent rounded-2 d-inline-block" href="../../../apps/e-commerce/landing/product-details.html"><img src="../../../assets/img//products/6.png" alt="" width="53"></a></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1" href="../../../apps/e-commerce/landing/product-details.html">PlayStation 5 DualSense Wireless Controller</a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body">White</td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold">Regular</td>
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end">$299</td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0">
-                                <button class="btn btn-sm text-body-quaternary text-body-tertiary-hover me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
-                                <button class="btn btn-primary fs-10"><svg class="svg-inline--fa fa-cart-shopping me-1 fs-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cart-shopping" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg><!-- <span class="fas fa-shopping-cart me-1 fs-10"></span> Font Awesome fontawesome.com -->Add to cart</button>
-                            </td>
-                        </tr><tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a class="border border-translucent rounded-2 d-inline-block" href="../../../apps/e-commerce/landing/product-details.html"><img src="../../../assets/img//products/3.png" alt="" width="53"></a></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1" href="../../../apps/e-commerce/landing/product-details.html">Apple MacBook Pro 13 inch-M1-8/256GB-space</a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body">Space Gray</td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold">Pro</td>
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end">$1,699</td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0">
-                                <button class="btn btn-sm text-body-quaternary text-body-tertiary-hover me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
-                                <button class="btn btn-primary fs-10"><svg class="svg-inline--fa fa-cart-shopping me-1 fs-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cart-shopping" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg><!-- <span class="fas fa-shopping-cart me-1 fs-10"></span> Font Awesome fontawesome.com -->Add to cart</button>
-                            </td>
-                        </tr><tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a class="border border-translucent rounded-2 d-inline-block" href="../../../apps/e-commerce/landing/product-details.html"><img src="../../../assets/img//products/4.png" alt="" width="53"></a></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1" href="../../../apps/e-commerce/landing/product-details.html">Apple iMac 24" 4K Retina Display M1 8 Core CPU, 7 Core GPU, 256GB SSD, Green (MJV83ZP/A) 2021</a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body">Ocean Blue</td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold">21"</td>
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end">$65</td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0">
-                                <button class="btn btn-sm text-body-quaternary text-body-tertiary-hover me-2"><svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"></path></svg><!-- <span class="fas fa-trash"></span> Font Awesome fontawesome.com --></button>
-                                <button class="btn btn-primary fs-10"><svg class="svg-inline--fa fa-cart-shopping me-1 fs-10" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cart-shopping" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z"></path></svg><!-- <span class="fas fa-shopping-cart me-1 fs-10"></span> Font Awesome fontawesome.com -->Add to cart</button>
-                            </td>
-                        </tr></tbody>
-                    </table>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
+                <div class="col-auto d-flex">
+                    <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info">1 to 5
+                        <span class="text-body-tertiary"> Items of </span>9</p><a class="fw-semibold" href="#!"
+                                                                                  data-list-view="*">View all
+                    <svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true"
+                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""
+                         style="transform-origin: 0.25em 0.5625em;">
+                        <g transform="translate(128 256)">
+                            <g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)">
+                                <path fill="currentColor"
+                                      d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"
+                                      transform="translate(-128 -256)"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com -->
+                </a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less
+                    <svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true"
+                         focusable="false" data-prefix="fas" data-icon="angle-right" role="img"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg=""
+                         style="transform-origin: 0.25em 0.5625em;">
+                        <g transform="translate(128 256)">
+                            <g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)">
+                                <path fill="currentColor"
+                                      d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"
+                                      transform="translate(-128 -256)"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com -->
+                </a>
                 </div>
-                <div class="row align-items-center justify-content-between py-2 pe-0 fs-9">
-                    <div class="col-auto d-flex">
-                        <p class="mb-0 d-none d-sm-block me-3 fw-semibold text-body" data-list-info="data-list-info">1 to 5 <span class="text-body-tertiary"> Items of </span>9</p><a class="fw-semibold" href="#!" data-list-view="*">View all<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z" transform="translate(-128 -256)"></path></g></g></svg><!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com --></a><a class="fw-semibold d-none" href="#!" data-list-view="less">View Less<svg class="svg-inline--fa fa-angle-right ms-1" data-fa-transform="down-1" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="" style="transform-origin: 0.25em 0.5625em;"><g transform="translate(128 256)"><g transform="translate(0, 32)  scale(1, 1)  rotate(0 0 0)"><path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z" transform="translate(-128 -256)"></path></g></g></svg><!-- <span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span> Font Awesome fontawesome.com --></a>
-                    </div>
-                    <div class="col-auto d-flex">
-                        <button class="page-link disabled" data-list-pagination="prev" disabled=""><svg class="svg-inline--fa fa-chevron-left" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path></svg><!-- <span class="fas fa-chevron-left"></span> Font Awesome fontawesome.com --></button>
-                        <ul class="mb-0 pagination"><li class="active"><button class="page" type="button" data-i="1" data-page="5">1</button></li><li><button class="page" type="button" data-i="2" data-page="5">2</button></li></ul>
-                        <button class="page-link pe-0" data-list-pagination="next"><svg class="svg-inline--fa fa-chevron-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path></svg><!-- <span class="fas fa-chevron-right"></span> Font Awesome fontawesome.com --></button>
-                    </div>
+                <div class="col-auto d-flex">
+                    <button class="page-link disabled" data-list-pagination="prev" disabled="">
+                        <svg class="svg-inline--fa fa-chevron-left" aria-hidden="true" focusable="false"
+                             data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 320 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                  d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path>
+                        </svg><!-- <span class="fas fa-chevron-left"></span> Font Awesome fontawesome.com --></button>
+                    <ul class="mb-0 pagination">
+                        <li class="active">
+                            <button class="page" type="button" data-i="1" data-page="5">1</button>
+                        </li>
+                        <li>
+                            <button class="page" type="button" data-i="2" data-page="5">2</button>
+                        </li>
+                    </ul>
+                    <button class="page-link pe-0" data-list-pagination="next">
+                        <svg class="svg-inline--fa fa-chevron-right" aria-hidden="true" focusable="false"
+                             data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 320 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                  d="M96 480c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L242.8 256L73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path>
+                        </svg><!-- <span class="fas fa-chevron-right"></span> Font Awesome fontawesome.com --></button>
                 </div>
             </div>
         </div>
-        <!-- end of .container-->
+    </div>
+    <!-- end of .container-->
 </div>
 </html>
