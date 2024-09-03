@@ -21,8 +21,5 @@ public class Customer {
     private boolean enabled;
     private String role;
 
-    private String cimage;
-    private String caddr;
-
-    private LocalDateTime cdate;
+    private LocalDateTime date;
 }

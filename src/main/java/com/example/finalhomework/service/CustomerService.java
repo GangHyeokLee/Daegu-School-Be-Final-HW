@@ -30,7 +30,7 @@ public class CustomerService implements UserDetailsService {
     public void create(Customer customer) {
         customer.setRole("ROLE_USER");
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        customer.setCdate(LocalDateTime.now());
+        customer.setDate(LocalDateTime.now());
         customerRepository.save(customer);
     }
 
