@@ -9,36 +9,26 @@
                         <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
                                for="inputName">제목</label>
                         <input class="form-control" id="inputName" type="text" placeholder="title"
-                               th:value="${notice.getTitle()}" disabled/>
+                               th:value="${question.getTitle()}" disabled/>
                     </div>
                     <div class="col-12">
                         <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none"
                                for="textarea123">내용</label>
-                        <div class="form-control" id="textarea123" th:utext="${notice.getAbout()}"></div>
+                        <div class="form-control" id="textarea123" th:utext="${question.getAbout()}"></div>
                     </div>
                     <div class="col-12">
                         <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputAddress2">분류</label>
                         <input class="form-control" id="inputAddress2" type="text" placeholder="category"
-                               th:value="${notice.getCate()}" disabled/>
+                               th:value="${question.getCate()}" disabled/>
                     </div>
-
-                    <!--                   <div class="col-md-4 mb-3">
-                                        <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputCountry">분류</label>
-                                        <select class="form-select text-body-emphasis" id="inputCountry">
-                                          <option selected="selected">USA</option>
-                                          <option value="uk">UK</option>
-                                          <option value="aus">AUS</option>
-                                          <option value="nz">NZ</option>
-                                        </select>
-                                      </div> -->
                     <div class="col-12">
-                        <img class="form-control" th:src="|${awsEndPoint}/${notice.getImg}|" alt="awsImage">
+                        <img class="form-control" th:src="|${awsEndPoint}/${question.getImg}|" alt="awsImage">
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <a class="btn btn-danger"  data-bs-toggle="modal"
                            data-bs-target="#exampleModal">삭제</a>
-                        <a class="btn btn-warning" th:href="@{|/update/${notice.getId()}|}">수정</a>
-                        <a class="btn btn-success" href="/readlist">돌아가기</a>
+                        <a class="btn btn-primary" th:href="@{|/update/${question.getId()}|}">수정</a>
+                        <a class="btn btn-secondary" href="/readlist">돌아가기</a>
                     </div>
                 </div>
             </form>
@@ -57,7 +47,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a type="button" class="btn btn-danger" th:href="@{|/delete/${notice.getId()}|}">삭제</a>
+                    <a type="button" class="btn btn-danger" th:href="@{|/delete/${question.getId()}|}">삭제</a>
                 </div>
             </div>
         </div>

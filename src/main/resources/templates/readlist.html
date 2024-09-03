@@ -1,13 +1,6 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content">
     <div class="container-small cart">
-        <nav class="mb-2" aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a href="#!">Page 1</a></li>
-                <li class="breadcrumb-item"><a href="#!">Page 2</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Default</li>
-            </ol>
-        </nav>
         <h2 class="mb-5">Q&A List<span class="text-body-tertiary fw-normal ms-2">(43)</span></h2>
         <div class="border-y border-translucent" id="productWishlistTable"
              data-list="{&quot;valueNames&quot;:[&quot;products&quot;,&quot;color&quot;,&quot;size&quot;,&quot;price&quot;,&quot;quantity&quot;,&quot;total&quot;],&quot;page&quot;:5,&quot;pagination&quot;:true}">
@@ -29,17 +22,23 @@
                     <tbody class="list" id="profile-wishlist-table-body">
                     <th:block th:each="question:${questions}">
                         <tr class="hover-actions-trigger btn-reveal-trigger position-static">
-                            <td class="price align-middle text-body fs-9 fw-semibold text-end" th:text="${question.getId()}"></td>
-                            <td class="align-middle white-space-nowrap ps-0 py-0"><a
-                                    class="border border-translucent rounded-2 d-inline-block"
-                                    th:href="/readdetail/${question.getId()}">
-                                <img th:src="|${awsEndPoint}/${question.getImg()}|" alt="" width="53"></a></td>
-                            <td class="color align-middle white-space-nowrap fs-9 text-body" th:text="${question.getCate()}"></td>
-                            <td class="products align-middle pe-11"><a class="fw-semibold mb-0 line-clamp-1"
-                                                                       th:href="/readdetail/${question.getId()}"
-                                                                       th:text="${question.title}"></a></td>
-                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold" th:text="${question.getAbout()}"></td>
-                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0" th:text="${question.getDate()}"></td>
+                            <td class="price align-middle text-body fs-9 fw-semibold text-end"
+                                th:text="${question.getId()}"></td>
+                                                        <td class="align-middle white-space-nowrap ps-0 py-0"><a
+                                                                class="border border-translucent rounded-2 d-inline-block"
+                                                                th:href="@{|/readdetail/${question.getId()}|}">
+                                                            <img th:src="|${awsEndPoint}/${question.getImg()}|" alt="" width="53"></a></td>
+                            <td class="color align-middle white-space-nowrap fs-9 text-body"
+                                th:text="${question.getCate()}"></td>
+                            <td class="product align-middle pe-11">
+                                <a class="fw-semibold mb-0 line-clamp-1" th:href="@{|/readdetail/${question.getId()}|}"
+                                   th:text="${question.title}">
+
+                                </a></td>
+                            <td class="size align-middle white-space-nowrap text-body-tertiary fs-9 fw-semibold"
+                                th:utext="${question.getAbout()}"></td>
+                            <td class="total align-middle fw-bold text-body-highlight text-end text-nowrap pe-0"
+                                th:text="${question.getDate().toLocalDate()}"></td>
                         </tr>
                     </th:block>
                     </tbody>
@@ -105,6 +104,7 @@
                 </div>
             </div>
         </div>
+        <a href="/create" class="btn btn-primary"><span class="fas fa-plus me-2"></span>공지사항 등록</a>
     </div>
     <!-- end of .container-->
 </div>
