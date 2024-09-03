@@ -32,7 +32,7 @@
                             <label class="form-label fs-8 text-body-highlight ps-0 text-transform-none" for="inputCountry">분류</label>
                             <select class="form-select text-body-emphasis" id="inputCountry" name="cate"
                                     th:data-value="${question.getCate()}">
-                                <option th:value="${question.getCate()}" selected disabled>[[${notice.getCate()}]]</option>
+                                <option th:value="${question.getCate()}" selected disabled>[[${question.getCate()}]]</option>
                                 <option value="계정문의">계정문의</option>
                                 <option value="상품문의">상품문의</option>
                                 <option value="배송문의">배송문의</option>

@@ -17,6 +17,7 @@ public class CustomerController {
     public String signup() {
         return "signup";
     }
+
     @PostMapping("/signup")
     public String signup(Customer customer) {
         customerService.create(customer);
