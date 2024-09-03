@@ -12,16 +12,31 @@
 - 이번 숙제의 주제는 디자인입니다…
 ### 제출
 
-- Signin
+- Signin<br>
+![img_2.png](img_2.png)
 
-- Signout
+
+- SignUp<br>
+![img_4.png](img_4.png)
+
 
 - DB
+![img_5.png](img_5.png)
+
+
 
 - List
+![img_6.png](img_6.png)
 
-- Create
-![img_1.png](img_1.png)
+
 
 - Detail
-![img_3.png](img_3.png)
+![img_7.png](img_7.png)
+
+
+- Create
+  ![img_1.png](img_1.png)
+
+
+- Update
+![img.png](img.png)
